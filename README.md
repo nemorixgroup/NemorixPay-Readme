@@ -19,7 +19,7 @@
 <p align="left">The primary goal of NemorixPay Phase 1 is to build a functional and user-friendly mobile application that enables:</p>
 
 * **Crypto-to-crypto transactions**: Sending and receiving payments in USDC, XLM, and potentially other stablecoins.
-* **Instant and low-cost transfers**: Leveraging the Stellar blockchain networks for fast and inexpensive transactions.
+* **Instant and low-cost transfers**: Using blockchain networks for fast and inexpensive transactions.
 * **Non-custodial wallet support**: Users maintain full control of their funds without reliance on third-party intermediaries.
 * **Basic user authentication and security measures**: Ensuring transactions are secure through encryption and authentication protocols.
 * **Intuitive UI/UX design**: A mobile-first experience that is simple and accessible for both crypto-savvy users and newcomers.
@@ -27,31 +27,31 @@
 <p align="left">The scope of Phase 1 is limited to:</p>
 
 * Development of the mobile application for iOS and Android using Flutter.
-* Integration with Stellar SDKs for blockchain transactions.
+* Integration with blockchain SDKs for remittance services.
 * Secure local storage of transaction history and wallet keys (secure remote storage on servers as well).
 * Basic KYC requirements for initial regulatory compliance.
 
 <p align="left">Future phases will expand on this foundation by introducing fiat conversion, bank integrations, and additional compliance features.</p>
 
-## :star: Stellar Integration – Progress Overview & Core Features (as of October 2025)
+## :star: Progress Overview & Core Features (as of October 2025)
 
-This section outlines the current state of Stellar integration within the app, including key functionality, development progress, and upcoming priorities. Each feature is marked based on its implementation status in the roadmap, from initial proof-of-concept (PoC) to Minimum Viable Product (MVP).
+This section outlines the current state of the app, including key functionality, development progress, and upcoming priorities. Each feature is marked based on its implementation status in the roadmap, from initial proof-of-concept (PoC) to Minimum Viable Product (MVP).
 
 | Functionality                     | Description                                                      | Status (PoC & MVP) |
 | --------------------------------- | ---------------------------------------------------------------- | -------------------- |
-| Account Creation                  | Create new Stellar accounts via the Flutter SDK.                 | ✅ (PoC)                   |
-| Account Import                    | Import existing Stellar accounts using secret keys.              | ✅ (PoC)                   |
-| Transaction Management            | Send, sign, and receive payments on Stellar (XLM, USDC).         | ✅ (PoC)                   |
+| Account Creation                  | Create new accounts via the Flutter SDK.                 | ✅ (PoC)                   |
+| Account Import                    | Import existing accounts using secret keys.              | ✅ (PoC)                   |
+| Transaction Management            | Send, sign, and receive payments.         | ✅ (PoC)                   |
 | Basic Auth login                  | Log in to the app using email and password credentials.          | ✅ (PoC)                   |
 | Advanced Auth login               | Log in to the app using Google or Apple ID (OAuth).              | 🚧 (MVP)                   |
 | Transaction History               | Allow users to view a complete list of their past transactions within the app. | 🚧 (MVP) |
 | Basic Multilanguage Support       | App available in English and Spanish.                            | ✅ (PoC)                   |
 | Local Private Key Custody         | Full local control and internal custody of public/private keys.  | ✅ (PoC)                   |
 | Extended Multilanguage Support    | Add Portuguese and French.                                       | 🚧 (MVP)                  |
-| Account Creation/Import (SEP-005) | Create and import Stellar accounts using SEP-005.                | 🚧 🔥 (MVP)               |
-| On/Off Ramps (Anchors, SEP-24 or SEP-06)  | Connect with Bitso for MXN ↔️ XLM/USDC deposits and withdrawals. | 🚧 🔥 (MVP)    |
+| Account Creation/Import | Create and import accounts.                | 🚧 🔥 (MVP)               |
+| On/Off Ramps (Eg. Anchors)  | Eg. Connecting with Bitso for MXN ↔️ XLM/USDC deposits and withdrawals. | 🚧 🔥 (MVP)    |
 | CoinGecko API                     | Integration with CoinGecko to gain access to real-time digital asset information.  | 🚧 (MVP)     |
-| KYC (Know Your Customer, SEP-12)  | Integration with Didit.me to meet regulatory compliance and strengthen trust with users and partners.                                | 🔄 🛠️ 🔥 (MVP)                  |
+| KYC (Know Your Customer)  | Integration with Didit.me to meet regulatory compliance and strengthen trust with users and partners.                                | 🔄 🛠️ 🔥 (MVP)                  |
 | Security Enhancements             | Protect account using 2FA App, Biometric login, SMS, and/or Email)    | 🚧 (MVP)                  |
 | Stablecoin Management             | Support for USDC and XLM.                                        | 🔄 (PoC & MVP)            |
 | Smart Contracts (Soroban)         | Not used in V1, planned for future releases.                     | 🌟                   |
@@ -103,18 +103,41 @@ The **KYC (Know Your Customer)** feature of NemorixPay implements a comprehensiv
 * **Networking**: HTTP & WebSocket for real-time data fetching and transaction updates
 * **Cryptography**: Stellar SDK built-in cryptographic tools for signing transactions
 
+### Hedera Blockchain Integration
+The mobile app will interact with the Hedera network using 
+[hedera_flutter_sdk](https://github.com/nemorixgroup/hedera-flutter-sdk), 
+the first native Flutter/Dart SDK for Hedera, built by Nemorix Group. 
+It provides essential tools for:
+
+* **Account Management** - Creating and managing Hedera accounts with 
+  ED25519 and ECDSA key support.
+* **Transaction Handling** - Constructing, signing, and submitting 
+  transactions to the Hedera network via gRPC.
+* **Balance & Payment Operations** - Querying balances, sending and 
+  receiving HBAR and HTS tokens (USDC).
+* **Native KYC Compliance** - Granting and revoking KYC on-chain via 
+  HTS; no anchor license required.
+* **Audit Logs** - (*Future scope*) Immutable transaction records via 
+  Hedera Consensus Service (HCS) for FinCEN compliance.
+
+📌 *Additional Notes*: BIP-39 mnemonic support in English and Spanish 
+is built in from day one; making hedera_flutter_sdk the first Hedera SDK 
+designed for LATAM users.
+
+More details on "[Hedera Integration](https://github.com/nemorixgroup/NemorixPay-Readme/tree/main/blockchains/hedera)" subsection.
+
 ### Stellar Blockchain Integration
 
 The mobile app will interact with the Stellar blockchain using the [Stellar Flutter SDK](https://github.com/Soneso/stellar_flutter_sdk), which provides essential tools for:
 
-* **Account Management** – Creating and managing Stellar accounts.
-* **Transaction Handling** – Constructing, signing, and submitting transactions to the Stellar network.
-* **Balance & Payment Operations** – Querying balances, sending and receiving payments.
-* **Soroban Smart Contracts** – (*Future scope*) Exploring contract deployment on Stellar’s Soroban.
+* **Account Management** - Creating and managing Stellar accounts.
+* **Transaction Handling** - Constructing, signing, and submitting transactions to the Stellar network.
+* **Balance & Payment Operations** - Querying balances, sending and receiving payments.
+* **Soroban Smart Contracts** - (*Future scope*) Exploring contract deployment on Stellar’s Soroban.
 
 📌 *Additional Notes*: The SDK documentation details [transaction signing and submission](https://github.com/Soneso/stellar_flutter_sdk/blob/master/soroban.md), ensuring compliance with Stellar's best practices.
 
-More details on "[Stellar Integration](https://github.com/nemorixpay/NemorixPay-Readme/blob/main/stellar/README.md)" subsection.
+More details on "[Stellar Integration](https://github.com/nemorixgroup/NemorixPay-Readme/tree/main/blockchains/stellar)" subsection.
 
 ## ⭐System Architecture
 
