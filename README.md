@@ -33,7 +33,7 @@
 
 <p align="left">Future phases will expand on this foundation by introducing fiat conversion, bank integrations, and additional compliance features.</p>
 
-## :star: Progress Overview & Core Features (as of October 2025)
+## :star: Progress Overview & Core Features (as of May 2026)
 
 This section outlines the current state of the app, including key functionality, development progress, and upcoming priorities. Each feature is marked based on its implementation status in the roadmap, from initial proof-of-concept (PoC) to Minimum Viable Product (MVP).
 
@@ -91,7 +91,7 @@ The **KYC (Know Your Customer)** feature of NemorixPay implements a comprehensiv
 
 ## :star:Initial Technology Stack
 
-<p align="left">NemorixPay’s mobile application will be built with a modern technology stack optimized for security, scalability, and seamless integration with the Stellar blockchain. The selection of technologies ensures high performance, maintainability, and cross-platform support.</p>
+<p align="left">NemorixPay’s mobile application will be built with a modern technology stack optimized for security, scalability, and seamless integration with a blockchain. The selection of technologies ensures high performance, maintainability, and cross-platform support.</p>
 
 ### Core Technologies
 
@@ -101,43 +101,31 @@ The **KYC (Know Your Customer)** feature of NemorixPay implements a comprehensiv
 * **Initial Backend Infrastructure**: Firebase (authentication, database, and cloud functions)
 * **Storage**: Secure Storage for sensitive data (e.g., user keys and credentials)
 * **Networking**: HTTP & WebSocket for real-time data fetching and transaction updates
-* **Cryptography**: Stellar SDK built-in cryptographic tools for signing transactions
+* **Cryptography**: Hedera, Stellar, and Algorand SDK built-in cryptographic tools for signing transactions
 
-### Hedera Blockchain Integration
-The mobile app will interact with the Hedera network using 
-[hedera_flutter_sdk](https://github.com/nemorixgroup/hedera-flutter-sdk), 
-the first native Flutter/Dart SDK for Hedera, built by Nemorix Group. 
-It provides essential tools for:
+## Blockchain Evaluation
 
-* **Account Management** - Creating and managing Hedera accounts with 
-  ED25519 and ECDSA key support.
-* **Transaction Handling** - Constructing, signing, and submitting 
-  transactions to the Hedera network via gRPC.
-* **Balance & Payment Operations** - Querying balances, sending and 
-  receiving HBAR and HTS tokens (USDC).
-* **Native KYC Compliance** - Granting and revoking KYC on-chain via 
-  HTS; no anchor license required.
-* **Audit Logs** - (*Future scope*) Immutable transaction records via 
-  Hedera Consensus Service (HCS) for FinCEN compliance.
+NemorixPay evaluates blockchain networks based on five criteria
+to find the best infrastructure for low-cost cross-border payments
+in Latin America.
 
-📌 *Additional Notes*: BIP-39 mnemonic support in English and Spanish 
-is built in from day one; making hedera_flutter_sdk the first Hedera SDK 
-designed for LATAM users.
+| Criteria                 | Weight |
+|:-------------------------|:-------|
+| Transaction cost          | 30%    |
+| Native compliance tools   | 25%    |
+| Finality speed            | 20%    |
+| Mobile SDK availability   | 15%    |
+| Environmental impact      | 10%    |
 
-More details on "[Hedera Integration](https://github.com/nemorixgroup/NemorixPay-Readme/tree/main/blockchains/hedera)" subsection.
+### Networks Evaluated
 
-### Stellar Blockchain Integration
+| Network   | Status              | Phase |
+|:----------|:--------------------|:------|
+| Stellar   | Active integration  | 1     |
+| Hedera    | Under evaluation    | 2     |
+| Algorand  | Under evaluation    | TBD   |
 
-The mobile app will interact with the Stellar blockchain using the [Stellar Flutter SDK](https://github.com/Soneso/stellar_flutter_sdk), which provides essential tools for:
-
-* **Account Management** - Creating and managing Stellar accounts.
-* **Transaction Handling** - Constructing, signing, and submitting transactions to the Stellar network.
-* **Balance & Payment Operations** - Querying balances, sending and receiving payments.
-* **Soroban Smart Contracts** - (*Future scope*) Exploring contract deployment on Stellar’s Soroban.
-
-📌 *Additional Notes*: The SDK documentation details [transaction signing and submission](https://github.com/Soneso/stellar_flutter_sdk/blob/master/soroban.md), ensuring compliance with Stellar's best practices.
-
-More details on "[Stellar Integration](https://github.com/nemorixgroup/NemorixPay-Readme/tree/main/blockchains/stellar)" subsection.
+More details on the "[Blockchains](https://github.com/nemorixgroup/NemorixPay-Readme/tree/main/blockchains/README.md)" subsection.
 
 ## ⭐System Architecture
 
@@ -145,7 +133,7 @@ The application follows the principles of **Clean Architecture**, promoting a cl
 
 * **Presentation Layer**: Manages the UI components and user interactions. Utilizes the BLoC pattern to handle state management, ensuring a reactive and streamlined user experience.
 * **Domain Layer**: Contains the core business logic and entities. Defines use cases that encapsulate application-specific business rules.
-* **Data Layer**: Responsible for data retrieval from external sources, such as the Stellar network, and local storage. Implements repositories that abstract the data sources, providing a clean API to the domain layer.
+* **Data Layer**: Responsible for data retrieval from external sources, such as the Hedera/Algorand/Stellar network, and local storage. Implements repositories that abstract the data sources, providing a clean API to the domain layer.
 
 ### **BloC Pattern for State Management in Flutter**
 
@@ -174,7 +162,7 @@ Security is paramount in the design of NemorixPay. Key measures include:
 * **Authentication**: Implementation of robust authentication mechanisms to ensure authorized access.
 * **Error Handling**: Comprehensive error handling to manage exceptions and maintain application stability.
 
-By adhering to these initial architectural principles and leveraging the capabilities of the Stellar network, NemorixPay aims to deliver a robust and user-centric platform for cross-border cryptocurrency transactions.
+By adhering to these initial architectural principles and leveraging the capabilities of the network, NemorixPay aims to deliver a robust and user-centric platform for cross-border cryptocurrency transactions.
 
 More details on "[Security](https://github.com/nemorixpay/NemorixPay-Readme/blob/main/security/README.md)" subsection.
 
@@ -209,7 +197,7 @@ The initial UX mockups are presented here. You can view the complete design (bot
 
 ## :star:Overview of NemorixPay Phase 2 (Future!)
 
-**Phase 2** should expand NemorixPay beyond mobile, offering a secure, scalable, and intuitive web solution for both individual users and merchants. This phase ensures a seamless experience across platforms while leveraging **Stellar’s blockchain** capabilities for fast and low-cost transactions.
+**Phase 2** should expand NemorixPay beyond mobile, offering a secure, scalable, and intuitive web solution for both individual users and merchants. This phase ensures a seamless experience across platforms while leveraging **blockchain** capabilities for fast and low-cost transactions.
 
 ### 🎯 Objective:  
 Develop a web-based platform that mirrors and extends NemorixPay’s mobile capabilities, providing users with additional flexibility to manage their finances, make payments, and access financial services from a desktop or browser.
