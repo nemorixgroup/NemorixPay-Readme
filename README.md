@@ -122,7 +122,7 @@ in Latin America.
 | Network   | Status              | Phase |
 |:----------|:--------------------|:------|
 | Stellar   | Active integration  | 1     |
-| Hedera    | Under evaluation    | 2     |
+| Hedera    | SDK in Development    | 1     |
 | Algorand  | Under evaluation    | TBD   |
 
 More details on the "[Blockchains](https://github.com/nemorixgroup/NemorixPay-Readme/tree/main/blockchains/README.md)" subsection.
